@@ -1,6 +1,6 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Upload, Trash2, Download, RefreshCw, Info, CheckCircle2, AlertCircle, FileImage, Image as ImageIcon } from 'lucide-react';
+import { Upload, Trash2, Download, RefreshCw, Info, CheckCircle2, AlertCircle, Image as ImageIcon } from 'lucide-react';
 import { type ImageFile } from './types';
 import { calculateTargetDimension, getImageDimensions, resizeImage } from './utils/imageUtils';
 import { GoogleGenAI } from '@google/genai';
