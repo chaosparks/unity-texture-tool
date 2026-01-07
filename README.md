@@ -2,6 +2,11 @@
 
 A professional, high-performance web utility designed for Unity developers to optimize textures. This tool automatically snaps image dimensions to the nearest multiple of 4, a critical requirement for enabling **Unity's Crunch Compression** (which requires DXT1/DXT5 formats that only work with 4-aligned dimensions).
 
+![img](./img/screen-1.png)
+
+If you do not resize texture as following, you will not get **Unity's Crunch Compression** work. And the texture will not be compressed as your wish. If you care about the game package size, such as H5 games, you must use the smaller texture as you can and compress those textures for all of them.
+![img](./img/crunch-compression-warning.png)
+
 ## ✨ Features
 
 - Smart Rounding Logic: Automatically adjusts dimensions to the nearest multiple of 4.
