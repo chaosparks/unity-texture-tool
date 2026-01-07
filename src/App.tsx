@@ -1,9 +1,8 @@
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Upload, Trash2, Download, RefreshCw, Info, CheckCircle2, AlertCircle, Image as ImageIcon } from 'lucide-react';
 import { type ImageFile } from './types';
 import { calculateTargetDimension, getImageDimensions, resizeImage } from './utils/imageUtils';
-import { GoogleGenAI } from '@google/genai';
 
 // External declaration for JSZip since we loaded it via CDN
 declare const JSZip: any;
@@ -11,25 +10,8 @@ declare const JSZip: any;
 const App: React.FC = () => {
   const [images, setImages] = useState<ImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [optimizationTip, setOptimizationTip] = useState<string | null>(null);
+  const [optimizationTip] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Fetch a tip from Gemini about Unity texture optimization
-  useEffect(() => {
-    const fetchTip = async () => {
-      try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-        const response = await ai.models.generateContent({
-          model: 'gemini-3-flash-preview',
-          contents: "Provide a very short, one-sentence tip for optimizing textures in Unity for better mobile performance (mention Crunch compression or Power of Two).",
-        });
-        setOptimizationTip(response.text);
-      } catch (err) {
-        console.error("Failed to fetch tip:", err);
-      }
-    };
-    fetchTip();
-  }, []);
 
   const handleFiles = useCallback(async (files: FileList | null) => {
     if (!files) return;
